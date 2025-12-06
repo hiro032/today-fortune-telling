@@ -10,12 +10,17 @@ COPY gradlew ./
 # Copy source code
 COPY src src
 
-# Build application
-RUN ./gradlew clean build -x test --no-daemon
+# Build application with memory limits
+RUN ./gradlew clean build -x test --no-daemon \
+    -Dorg.gradle.jvmargs="-Xmx512m -XX:MaxMetaspaceSize=256m" \
+    --max-workers=1
 
 # Runtime stage
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
+
+# Install required libraries for Spring AI Transformers
+RUN apk add --no-cache libstdc++
 
 # Copy jar from build stage
 COPY --from=build /app/build/libs/spring-ai-rag-agent-1.0.0.jar app.jar

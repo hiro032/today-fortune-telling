@@ -1,0 +1,12 @@
+# 사전 빌드된 JAR 사용 (빌드 시간 단축, 메모리 절약)
+FROM eclipse-temurin:17-jre-alpine
+WORKDIR /app
+
+# 로컬에서 빌드된 JAR 복사
+COPY build/libs/spring-ai-rag-agent-1.0.0.jar app.jar
+
+# Expose port
+EXPOSE 8080
+
+# Run application
+CMD ["sh", "-c", "java -Dserver.port=${PORT:-8080} -Xmx256m -jar app.jar"]
