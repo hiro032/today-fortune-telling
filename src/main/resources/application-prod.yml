@@ -1,11 +1,9 @@
 spring:
-  application:
-    name: spring-ai-rag-agent
   ai:
     ollama:
-      # 환경 변수 OLLAMA_URL로 설정 가능
-      # ngrok URL을 여기에 설정: https://your-ngrok-url.ngrok-free.app
-      base-url: ${OLLAMA_URL:http://localhost:11434}
+      # 프로덕션 환경: ngrok 터널을 통한 로컬 Ollama 접근
+      # Render 환경 변수 OLLAMA_URL에서 ngrok URL 설정
+      base-url: ${OLLAMA_URL}
       chat:
         options:
           model: ${OLLAMA_CHAT_MODEL:llama3.2}
@@ -15,6 +13,7 @@ spring:
           model: ${OLLAMA_EMBEDDING_MODEL:nomic-embed-text}
 
 server:
+  # Render가 동적으로 PORT 환경 변수 설정
   port: ${PORT:8080}
 
 logging:
