@@ -9,77 +9,115 @@
 <body>
     <div class="container">
         <header>
-            <h1>🔮 오늘의 운세 🔮</h1>
-            <p class="subtitle">당신의 오늘을 밝혀드립니다</p>
+            <h1>🔮 운세 & 사주팔자 🔮</h1>
+            <p class="subtitle">당신의 운명을 밝혀드립니다</p>
         </header>
 
         <main>
-            <div class="form-container" id="formContainer">
+            <!-- 서비스 선택 화면 -->
+            <div class="service-selection" id="serviceSelection">
+                <h2>원하시는 서비스를 선택하세요</h2>
+                <div class="service-buttons">
+                    <button class="service-btn" id="fortuneBtn" onclick="selectService('fortune')">
+                        <div class="service-icon">🌟</div>
+                        <h3>오늘의 운세</h3>
+                        <p>오늘 하루의 운세를 확인하세요</p>
+                    </button>
+                    <button class="service-btn" id="sajuBtn" onclick="selectService('saju')">
+                        <div class="service-icon">📜</div>
+                        <h3>사주팔자</h3>
+                        <p>평생의 운명을 사주로 풀어보세요</p>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 오늘의 운세 폼 -->
+            <div class="form-container" id="fortuneFormContainer" style="display: none;">
+                <button class="back-btn" onclick="backToSelection()">← 뒤로 가기</button>
+                <h2>오늘의 운세</h2>
                 <form id="fortuneForm">
                     <div class="form-group">
-                        <label for="name">이름</label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            placeholder="홍길동"
-                            required
-                        >
+                        <label for="fortuneName">이름</label>
+                        <input type="text" id="fortuneName" placeholder="홍길동" required>
                     </div>
 
                     <div class="form-group">
                         <label>성별</label>
                         <div class="radio-group">
                             <label class="radio-label">
-                                <input
-                                    type="radio"
-                                    name="gender"
-                                    value="male"
-                                    required
-                                >
+                                <input type="radio" name="fortuneGender" value="male" required>
                                 <span>남성</span>
                             </label>
                             <label class="radio-label">
-                                <input
-                                    type="radio"
-                                    name="gender"
-                                    value="female"
-                                    required
-                                >
+                                <input type="radio" name="fortuneGender" value="female" required>
                                 <span>여성</span>
                             </label>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="birthDate">생년월일</label>
-                        <input
-                            type="date"
-                            id="birthDate"
-                            name="birthDate"
-                            required
-                        >
+                        <label for="fortuneBirthDate">생년월일</label>
+                        <input type="date" id="fortuneBirthDate" required>
                     </div>
 
-                    <button type="submit" class="submit-btn" id="submitBtn">
-                        운세 보기
-                    </button>
+                    <button type="submit" class="submit-btn">운세 보기</button>
                 </form>
             </div>
 
-            <div class="result-container" id="resultContainer" style="display: none;">
-                <div class="result-header">
-                    <h2><span id="resultName"></span>님의 오늘의 운세</h2>
-                </div>
-                <div class="result-content" id="resultContent">
-                    <!-- Fortune result will be displayed here -->
-                </div>
-                <button class="reset-btn" id="resetBtn">다시 보기</button>
+            <!-- 사주팔자 폼 -->
+            <div class="form-container" id="sajuFormContainer" style="display: none;">
+                <button class="back-btn" onclick="backToSelection()">← 뒤로 가기</button>
+                <h2>사주팔자</h2>
+                <form id="sajuForm">
+                    <div class="form-group">
+                        <label for="sajuName">이름</label>
+                        <input type="text" id="sajuName" placeholder="홍길동" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>성별</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="sajuGender" value="male" required>
+                                <span>남성</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="sajuGender" value="female" required>
+                                <span>여성</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sajuBirthDate">생년월일</label>
+                        <input type="date" id="sajuBirthDate" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sajuBirthTime">태어난 시간 (선택사항)</label>
+                        <input type="time" id="sajuBirthTime" placeholder="HH:MM">
+                        <small>시간을 모르시면 비워두셔도 됩니다</small>
+                    </div>
+
+                    <button type="submit" class="submit-btn">사주 보기</button>
+                </form>
             </div>
 
+            <!-- 결과 표시 -->
+            <div class="result-container" id="resultContainer" style="display: none;">
+                <div class="result-header">
+                    <h2 id="resultTitle"></h2>
+                </div>
+                <div class="result-content" id="resultContent">
+                    <!-- Result will be displayed here -->
+                </div>
+                <button class="reset-btn" onclick="backToSelection()">처음으로</button>
+            </div>
+
+            <!-- 로딩 -->
             <div class="loading" id="loading" style="display: none;">
                 <div class="spinner"></div>
-                <p>운세를 확인하고 있습니다...</p>
+                <p id="loadingText">운세를 확인하고 있습니다...</p>
             </div>
         </main>
 
