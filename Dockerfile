@@ -16,11 +16,9 @@ RUN ./gradlew clean build -x test --no-daemon \
     --max-workers=1
 
 # Runtime stage
-FROM eclipse-temurin:17-jre-alpine
+# Use Ubuntu-based image instead of Alpine for glibc compatibility
+FROM eclipse-temurin:17-jre
 WORKDIR /app
-
-# Install required libraries for Spring AI Transformers
-RUN apk add --no-cache libstdc++
 
 # Copy jar from build stage
 COPY --from=build /app/build/libs/spring-ai-rag-agent-1.0.0.jar app.jar
