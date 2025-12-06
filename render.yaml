@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: today-fortune-telling
+    env: docker
+    dockerfilePath: ./Dockerfile
+    region: oregon  # 또는 singapore (가까운 리전)
+    plan: free
+    envVars:
+      - key: OLLAMA_URL
+        value: https://ooziest-unhemmed-rheba.ngrok-free.dev
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: PORT
+        value: 8080
+    healthCheckPath: /api/chat/health
