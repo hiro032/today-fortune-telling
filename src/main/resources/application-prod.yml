@@ -3,7 +3,8 @@ spring:
     ollama:
       # 프로덕션 환경: ngrok 터널을 통한 로컬 Ollama 접근
       # Render 환경 변수 OLLAMA_URL에서 ngrok URL 설정
-      base-url: ${OLLAMA_URL}
+      # IMPORTANT: OLLAMA_URL 환경 변수가 반드시 설정되어야 합니다!
+      base-url: ${OLLAMA_URL:MISSING_OLLAMA_URL_ENV_VAR}
       chat:
         options:
           model: ${OLLAMA_CHAT_MODEL:llama3.2}
