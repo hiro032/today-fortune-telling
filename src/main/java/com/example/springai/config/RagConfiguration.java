@@ -2,12 +2,15 @@ package com.example.springai.config;
 
 import org.springframework.ai.document.Document;
 import org.springframework.ai.embedding.EmbeddingModel;
+import org.springframework.ai.ollama.OllamaEmbeddingModel;
+import org.springframework.ai.ollama.api.OllamaApi;
+import org.springframework.ai.ollama.api.OllamaOptions;
 import org.springframework.ai.reader.TextReader;
 import org.springframework.ai.transformer.splitter.TokenTextSplitter;
 import org.springframework.ai.vectorstore.SimpleVectorStore;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
@@ -21,12 +24,30 @@ public class RagConfiguration {
     @Value("classpath:/documents/*.txt")
     private Resource[] documentResources;
 
+    @Value("${spring.ai.ollama.base-url:http://localhost:11434}")
+    private String ollamaBaseUrl;
+
+    @Value("${spring.ai.ollama.embedding.options.model:nomic-embed-text}")
+    private String embeddingModelName;
+
     /**
-     * VectorStore will use the auto-configured EmbeddingModel from Ollama
-     * (spring-ai-ollama-spring-boot-starter provides this automatically)
+     * Create EmbeddingModel bean for Ollama embeddings
+     * Only create if not already provided by auto-configuration
      */
     @Bean
-    @ConditionalOnBean(EmbeddingModel.class)
+    @ConditionalOnMissingBean
+    public EmbeddingModel embeddingModel() {
+        var ollamaApi = new OllamaApi(ollamaBaseUrl);
+        return OllamaEmbeddingModel.builder()
+            .withOllamaApi(ollamaApi)
+            .withDefaultOptions(OllamaOptions.create().withModel(embeddingModelName))
+            .build();
+    }
+
+    /**
+     * VectorStore using Ollama embeddings
+     */
+    @Bean
     public VectorStore vectorStore(EmbeddingModel embeddingModel) {
         return new SimpleVectorStore(embeddingModel);
     }
