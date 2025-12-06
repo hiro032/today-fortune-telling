@@ -24,20 +24,16 @@ public class RagConfiguration {
     @Value("classpath:/documents/*.txt")
     private Resource[] documentResources;
 
-    @Value("${spring.ai.ollama.base-url:http://localhost:11434}")
-    private String ollamaBaseUrl;
-
     @Value("${spring.ai.ollama.embedding.options.model:nomic-embed-text}")
     private String embeddingModelName;
 
     /**
      * Create EmbeddingModel bean for Ollama embeddings
-     * Only create if not already provided by auto-configuration
+     * Uses the OllamaApi bean configured with ngrok headers
      */
     @Bean
     @ConditionalOnMissingBean
-    public EmbeddingModel embeddingModel() {
-        var ollamaApi = new OllamaApi(ollamaBaseUrl);
+    public EmbeddingModel embeddingModel(OllamaApi ollamaApi) {
         return OllamaEmbeddingModel.builder()
             .withOllamaApi(ollamaApi)
             .withDefaultOptions(OllamaOptions.create().withModel(embeddingModelName))
