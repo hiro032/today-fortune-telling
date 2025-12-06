@@ -1,0 +1,45 @@
+Frequently Asked Questions - TechCorp
+
+Q: What is the difference between AI Platform Pro and CloudServe Enterprise?
+A: AI Platform Pro is specifically designed for machine learning workloads and includes ML-specific features
+like model training, deployment, and monitoring. CloudServe Enterprise is a general-purpose cloud infrastructure
+service that can host any type of application. Many customers use both together.
+
+Q: How do I get started with TechCorp services?
+A: You can sign up for a free trial on our website. The trial includes access to all our products for 14 days.
+After the trial, you can choose the plan that best fits your needs. Our sales team is also available to help
+you select the right services.
+
+Q: What kind of support do you offer?
+A: We offer three tiers of support: Basic (included with all plans), Professional ($2,000/month), and
+Enterprise ($10,000/month). Higher tiers include faster response times and dedicated support teams.
+
+Q: Is my data secure with TechCorp?
+A: Yes, security is our top priority. We are SOC 2 Type II certified, GDPR compliant, and ISO 27001 certified.
+All data is encrypted in transit and at rest. We also offer private cloud options for customers with strict
+compliance requirements.
+
+Q: Can I integrate TechCorp services with my existing systems?
+A: Absolutely! Our products support standard APIs and protocols. We also offer pre-built integrations with
+popular platforms like Salesforce, SAP, AWS, Azure, and Google Cloud. Custom integrations can be developed
+through our consulting services.
+
+Q: What programming languages do you support?
+A: Our AI Platform supports Python, R, Java, and Scala. Our APIs are RESTful and can be accessed from any
+programming language that supports HTTP requests.
+
+Q: Do you offer training for my team?
+A: Yes, we offer both online and in-person training programs. Topics include AI/ML fundamentals, platform
+usage, best practices, and advanced techniques. Training can be customized to your team's needs.
+
+Q: What is your uptime guarantee?
+A: We guarantee 99.9% uptime for all our services, backed by our SLA. Enterprise customers can get up to
+99.99% uptime guarantee with additional redundancy options.
+
+Q: How does billing work?
+A: Most of our services are billed monthly based on usage. We provide detailed usage reports and cost
+forecasting tools. Enterprise customers can opt for annual contracts with volume discounts.
+
+Q: Can I cancel my subscription anytime?
+A: Yes, you can cancel anytime with no cancellation fees. If you cancel mid-month, you'll have access to
+services until the end of your billing period.

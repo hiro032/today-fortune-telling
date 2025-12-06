@@ -1,0 +1,43 @@
+TechCorp Product Catalog
+
+AI Platform Pro:
+Our flagship AI Platform Pro is designed for enterprise customers who need powerful machine learning
+capabilities at scale. Features include:
+- Automated model training and deployment
+- Support for all major ML frameworks (TensorFlow, PyTorch, Scikit-learn)
+- Built-in data preprocessing and feature engineering
+- Real-time model monitoring and performance tracking
+- Integration with popular data sources and warehouses
+- Pricing: Starting at $5,000/month for up to 100 models
+
+CloudServe Enterprise:
+A comprehensive cloud infrastructure solution that provides:
+- Auto-scaling compute resources
+- Managed Kubernetes clusters
+- Serverless functions
+- Object storage with 99.99% availability
+- Global CDN with edge computing
+- Advanced security and compliance features
+- Pricing: Pay-as-you-go, starting at $0.10/hour per instance
+
+DataSync Pro:
+Real-time data synchronization and ETL pipeline service:
+- Connect to 100+ data sources
+- Visual pipeline builder
+- Real-time and batch processing
+- Data quality monitoring
+- Automatic schema detection
+- Pricing: $1,000/month base + usage
+
+AI Consulting Services:
+Our expert consultants help you:
+- Develop AI/ML strategy
+- Build custom models
+- Optimize existing ML pipelines
+- Train your team
+- Pricing: Custom quotes based on project scope
+
+Enterprise Support Tiers:
+- Basic: Email support, 48-hour response time - Included
+- Professional: 24/7 phone and email, 4-hour response - $2,000/month
+- Enterprise: Dedicated support team, 1-hour response - $10,000/month

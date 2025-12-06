@@ -1,0 +1,31 @@
+Company Information - TechCorp Inc.
+
+About TechCorp:
+TechCorp Inc. is a leading technology company founded in 2010. We specialize in artificial intelligence,
+machine learning, and cloud computing solutions. Our headquarters is located in San Francisco, California,
+with additional offices in New York, London, and Tokyo.
+
+Our Mission:
+To empower businesses worldwide with cutting-edge AI technology that drives innovation and efficiency.
+
+Products and Services:
+1. AI Platform - Enterprise-grade machine learning platform
+2. Cloud Services - Scalable cloud infrastructure
+3. Consulting Services - Expert AI/ML consulting
+4. Training Programs - Professional development in AI/ML
+
+Company Values:
+- Innovation: We constantly push the boundaries of what's possible
+- Integrity: We operate with honesty and transparency
+- Collaboration: We believe in the power of teamwork
+- Excellence: We strive for the highest quality in everything we do
+
+Awards and Recognition:
+- Best AI Company 2023 - Tech Awards
+- Innovation Leader 2022 - Business Magazine
+- Top Employer 2023 - HR Excellence
+
+Contact Information:
+Email: info@techcorp.com
+Phone: +1-555-0123
+Website: www.techcorp.com
