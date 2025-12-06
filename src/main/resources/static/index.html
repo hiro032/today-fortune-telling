@@ -28,6 +28,11 @@
                         <h3>사주팔자</h3>
                         <p>평생의 운명을 사주로 풀어보세요</p>
                     </button>
+                    <button class="service-btn" id="compatibilityBtn" onclick="selectService('compatibility')">
+                        <div class="service-icon">💑</div>
+                        <h3>궁합 보기</h3>
+                        <p>두 사람의 궁합을 분석합니다</p>
+                    </button>
                 </div>
             </div>
 
@@ -114,10 +119,88 @@
                 <button class="reset-btn" onclick="backToSelection()">처음으로</button>
             </div>
 
-            <!-- 로딩 -->
+            <!-- 궁합 보기 폼 -->
+            <div class="form-container" id="compatibilityFormContainer" style="display: none;">
+                <button class="back-btn" onclick="backToSelection()">← 뒤로 가기</button>
+                <h2>궁합 보기</h2>
+                <form id="compatibilityForm">
+                    <div class="person-section">
+                        <h3>첫 번째 사람</h3>
+                        <div class="form-group">
+                            <label for="name1">이름</label>
+                            <input type="text" id="name1" placeholder="홍길동" required>
+                        </div>
+                        <div class="form-group">
+                            <label>성별</label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="gender1" value="male" required>
+                                    <span>남성</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="gender1" value="female" required>
+                                    <span>여성</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="birthDate1">생년월일</label>
+                            <input type="date" id="birthDate1" required>
+                        </div>
+                    </div>
+
+                    <div class="person-section">
+                        <h3>두 번째 사람</h3>
+                        <div class="form-group">
+                            <label for="name2">이름</label>
+                            <input type="text" id="name2" placeholder="김철수" required>
+                        </div>
+                        <div class="form-group">
+                            <label>성별</label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="gender2" value="male" required>
+                                    <span>남성</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="gender2" value="female" required>
+                                    <span>여성</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="birthDate2">생년월일</label>
+                            <input type="date" id="birthDate2" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="compatibilityType">궁합 타입</label>
+                        <select id="compatibilityType" class="select-input">
+                            <option value="general">전반적인 궁합</option>
+                            <option value="love">연애 궁합</option>
+                            <option value="marriage">결혼 궁합</option>
+                            <option value="business">사업 파트너 궁합</option>
+                            <option value="friendship">우정 궁합</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="submit-btn">궁합 분석하기</button>
+                </form>
+            </div>
+
+            <!-- 로딩 (개선된 UI) -->
             <div class="loading" id="loading" style="display: none;">
-                <div class="spinner"></div>
-                <p id="loadingText">운세를 확인하고 있습니다...</p>
+                <div class="loading-animation">
+                    <div class="crystal-ball">
+                        <div class="crystal-inner"></div>
+                        <div class="sparkle sparkle-1">✨</div>
+                        <div class="sparkle sparkle-2">✨</div>
+                        <div class="sparkle sparkle-3">✨</div>
+                    </div>
+                </div>
+                <p id="loadingText" class="loading-main-text">운세를 확인하고 있습니다...</p>
+                <p id="loadingTip" class="loading-tip">잠시만 기다려주세요</p>
             </div>
         </main>
 
