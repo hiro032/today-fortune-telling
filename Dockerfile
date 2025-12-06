@@ -26,6 +26,6 @@ COPY --from=build /app/build/libs/spring-ai-rag-agent-1.0.0.jar app.jar
 # Expose port (Render will set PORT env variable)
 EXPOSE 8080
 
-# Run application
+# Run application with memory limits for Render's 512MB free tier
 # Render sets PORT env variable dynamically
-CMD ["sh", "-c", "java -Dserver.port=${PORT:-8080} -jar app.jar"]
+CMD ["sh", "-c", "java -Xmx384m -Xms256m -XX:MaxMetaspaceSize=128m -Dserver.port=${PORT:-8080} -jar app.jar"]
