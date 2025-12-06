@@ -14,5 +14,6 @@ public class SajuResponse {
     private String dayPillar;     // 일주
     private String hourPillar;    // 시주
     private String saju;          // 전체 사주팔자
-    private String interpretation; // AI 해석
+    private String interpretation; // 해석
+    private String analysisMode;   // "AI" or "LOGIC"
 }

@@ -2,6 +2,7 @@ package com.example.springai.service;
 
 import com.example.springai.dto.SajuRequest;
 import com.example.springai.dto.SajuResponse;
+import com.example.springai.util.SajuAnalyzer;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.stereotype.Service;
 
@@ -60,8 +61,22 @@ public class SajuService {
         // 사주팔자 문자열
         String saju = String.format("%s %s %s %s", yearPillar, monthPillar, dayPillar, hourPillar);
 
-        // AI 해석 요청
-        String interpretation = getAIInterpretation(request, saju);
+        // 해석 모드 결정 (기본값: AI)
+        String analysisMode = request.getAnalysisMode() != null
+            ? request.getAnalysisMode().toUpperCase()
+            : "AI";
+
+        // 해석 요청
+        String interpretation;
+        if ("LOGIC".equals(analysisMode)) {
+            // 순수 로직 기반 해석
+            interpretation = SajuAnalyzer.analyzeSaju(
+                yearPillar, monthPillar, dayPillar, hourPillar, request.getGender()
+            );
+        } else {
+            // AI 해석
+            interpretation = getAIInterpretation(request, saju);
+        }
 
         return SajuResponse.builder()
             .name(request.getName())
@@ -73,6 +88,7 @@ public class SajuService {
             .hourPillar(hourPillar)
             .saju(saju)
             .interpretation(interpretation)
+            .analysisMode(analysisMode)
             .build();
     }
 

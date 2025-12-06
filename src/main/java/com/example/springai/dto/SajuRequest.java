@@ -8,4 +8,5 @@ public class SajuRequest {
     private String gender;
     private String birthDate;  // YYYY-MM-DD
     private String birthTime;  // HH:mm (optional)
+    private String analysisMode; // "AI" or "LOGIC" (optional, default: AI)
 }

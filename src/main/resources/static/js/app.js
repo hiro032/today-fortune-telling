@@ -151,12 +151,14 @@ sajuForm.addEventListener('submit', async (e) => {
     const gender = document.querySelector('input[name="sajuGender"]:checked').value;
     const birthDate = document.getElementById('sajuBirthDate').value;
     const birthTime = document.getElementById('sajuBirthTime').value;
+    const analysisMode = document.querySelector('input[name="analysisMode"]:checked').value;
 
     const data = {
         name: name,
         gender: gender,
         birthDate: birthDate,
-        birthTime: birthTime || null
+        birthTime: birthTime || null,
+        analysisMode: analysisMode
     };
 
     // Validate data
@@ -284,13 +286,15 @@ function displayFortuneResult(result) {
 
 // Display saju result
 function displaySajuResult(result) {
-    resultTitle.textContent = `${result.name}님의 사주팔자`;
+    const modeLabel = result.analysisMode === 'LOGIC' ? '전통 해석' : 'AI 해석';
+    resultTitle.textContent = `${result.name}님의 사주팔자 (${modeLabel})`;
 
     const html = `
         <div class="saju-result">
             <div class="info-section">
                 <p><strong>생년월일:</strong> ${result.birthDate}</p>
                 ${result.birthTime ? `<p><strong>태어난 시간:</strong> ${result.birthTime}</p>` : ''}
+                <p><strong>분석 방식:</strong> ${modeLabel}</p>
             </div>
 
             <div class="saju-pillars">
